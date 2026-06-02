@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Docs — AgentFactory</title>
-  <meta name="description" content="Step-by-step installation and environment setup for AgentFactory." />
-
-  <!-- Bulma + extensions -->
+  <title>AgentSpec Documentation</title>
+  <meta name="description" content="Documentation for AgentSpec modular embodied-agent framework and benchmark usage." />
+  <link rel="icon" type="image/svg+xml" href="assets/agentspec-logo.svg" />
   <link rel="stylesheet" href="css/bulma.min.css" />
-  <link rel="stylesheet" href="css/bulma-carousel.min.css" />
-  <link rel="stylesheet" href="css/bulma-slider.min.css" />
-  <link rel="stylesheet" href="css/fontawesome.all.min.css" />
-
-  <!-- Project overrides -->
-  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
-
-<body class="docs-light">
-
-  <!-- ── Navbar ─────────────────────────────────────────────── -->
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+<body>
+  <nav class="navbar is-fixed-top top-nav" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item has-text-weight-semibold" href="index.html">
-          <span class="icon has-text-info mr-2"><i class="fas fa-robot"></i></span>
-          AgentFactory
+        <a class="navbar-item brand" href="index.html">
+          <img src="assets/agentspec-logo.svg" alt="AgentSpec logo" class="brand-logo" />
+          <span>AgentSpec</span>
         </a>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mainNav">
           <span aria-hidden="true"></span>
@@ -35,331 +25,119 @@
       </div>
       <div id="mainNav" class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item" href="index.html">
-            <span class="icon"><i class="fas fa-home"></i></span><span>Home</span>
-          </a>
-          <a class="navbar-item is-active" href="docs.html">
-            <span class="icon"><i class="fas fa-book"></i></span><span>Docs</span>
-          </a>
-          <a class="navbar-item" href="playground.html">
-            <span class="icon"><i class="fas fa-cogs"></i></span><span>Playground</span>
-          </a>
-          <a class="navbar-item" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">
-            <span class="icon"><i class="fab fa-github"></i></span><span>GitHub</span>
-          </a>
+          <a class="navbar-item" href="index.html">Home</a>
+          <a class="navbar-item is-active" href="docs.html">Docs</a>
+          <a class="navbar-item" href="playground/playground.html">Playground</a>
+          <a class="navbar-item" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- ── Main content ───────────────────────────────────────── -->
-  <section class="section is-first-below-nav">
-    <div class="container">
-      <div class="columns">
-
-        <!-- Sidebar -->
-        <div class="column is-3">
-          <aside class="menu docs-sidebar">
-            <p class="menu-label">Getting Started</p>
-            <ul class="menu-list">
-              <li><a class="is-active" href="#overview">Overview</a></li>
-              <li><a href="#installation">Installation</a></li>
-              <li><a href="#quick-start">Quick Start</a></li>
-              <li><a href="#run-first-agent">Run First Agent</a></li>
-            </ul>
-            <p class="menu-label">Environments</p>
-            <ul class="menu-list">
-              <li><a href="#environment-overview">Environment Overview</a></li>
-              <li><a href="#minigrid-environments">MiniGrid Environments</a></li>
-            </ul>
-            <p class="menu-label">Tools</p>
-            <ul class="menu-list">
-              <li><a href="#quick-start-code">Quick Start Code</a></li>
-              <li><a href="#interactive-demo">Playground</a></li>
-            </ul>
-          </aside>
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="container is-max-desktop">
+        <div class="hero-logo-row">
+          <img src="assets/agentspec-logo.svg" alt="AgentSpec logo" class="hero-title-logo" />
+          <span class="hero-logo-text">AgentSpec Docs</span>
         </div>
+        <h1 class="title is-2 paper-title">AgentSpec Documentation</h1>
+        <p class="affiliations">Modular embodied-agent composition, reproducible evaluation, and controlled ablations.</p>
+      </div>
+    </section>
 
-        <!-- Content -->
-        <div class="column is-9">
-          <div class="content docs-content-narrow">
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Framework Overview</h2>
+        <p>
+          AgentSpec models embodied agents as explicit modular compositions of
+          <strong>Perception, Memory, Reasoning, Reflection, and Action</strong>,
+          with optional reinforcement learning for policy optimization.
+        </p>
+        <ul class="bullets">
+          <li>Typed interfaces allow modules to be swapped without rewriting environment wrappers.</li>
+          <li>Module-level and interaction-level effects can be measured under consistent settings.</li>
+          <li>The same design space is reused across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR.</li>
+        </ul>
+      </div>
+    </section>
 
-            <!-- Header -->
-            <header id="overview" class="mb-6">
-              <p class="section-eyebrow section-eyebrow--muted">Getting Started</p>
-              <h1 class="title is-2 mt-2 heading-display">Docs</h1>
-              <p class="subtitle is-5 has-text-grey">
-                Get the framework running on your machine in a few minutes. Install the base package,
-                enable the extras you need, and run a working agent loop against MiniGrid or DeliveryBench.
-              </p>
-            </header>
-
-            <!-- Overview -->
-            <section class="mb-6">
-              <h2 class="title is-4 heading-display">Overview</h2>
-              <p>
-                AgentFactory lets you combine environment adapters, perception,
-                reasoning, memory, and reflection modules into a single agent runtime. The setup flow
-                below keeps the defaults simple while still making it easy to enable LLM-based methods
-                and environment-specific dependencies.
-              </p>
-              <div class="notification is-info is-light mt-4">
-                <strong>New here?</strong> Start with the installation and quick start commands below,
-                then use the playground once the core dependencies are installed.
-              </div>
-            </section>
-
-            <!-- Installation -->
-            <hr />
-            <section id="installation" class="mb-6">
-              <h2 class="title is-4 heading-display">Installation</h2>
-              <p>
-                Clone the repository and install it in editable mode. Add optional extras depending on
-                the environment stack you plan to use.
-              </p>
-              <div class="code-panel mt-4">
-                <div class="code-toolbar">
-                  <span class="code-filename">terminal</span>
-                </div>
-                <div class="code-body">
-                  <pre><span class="cmt"># Clone</span>
-git clone https://github.com/chenjix/agentfractory.git
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Installation</h2>
+        <pre class="bibtex-block"><code>git clone https://github.com/chenjix/agentfractory.git
 cd agentfractory
-
-<span class="cmt"># Basic install</span>
 pip install -e .
 
-<span class="cmt"># Optional extras</span>
-pip install -e <span class="str">".[thor]"</span>      <span class="cmt"># AI2-THOR support</span>
-pip install -e <span class="str">".[gym]"</span>       <span class="cmt"># Gym / MiniGrid support</span></pre>
-                </div>
-              </div>
-            </section>
+# Optional extras
+pip install -e ".[gym]"
+pip install -e ".[thor]"</code></pre>
+      </div>
+    </section>
 
-            <!-- Quick Start -->
-            <hr />
-            <section id="quick-start" class="mb-6">
-              <h2 class="title is-4 heading-display">Quick Start</h2>
-              <p>
-                Set <code class="setup-inline-code">OPENAI_API_KEY</code> if you plan to use
-                LLM-backed reasoning. MiniGrid and AI2-THOR can then be installed independently.
-              </p>
-              <div class="code-panel mt-4">
-                <div class="code-toolbar">
-                  <span class="code-filename">terminal</span>
-                </div>
-                <div class="code-body">
-                  <pre><span class="cmt"># API key for llm, react, cot, tot, guided_search, or self_refine</span>
-<span class="kw">export</span> OPENAI_API_KEY=<span class="str">"sk-..."</span>
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Quick Start</h2>
+        <pre class="bibtex-block"><code>export OPENAI_API_KEY="sk-..."
 
-<span class="cmt"># MiniGrid</span>
-pip install minigrid
-
-<span class="cmt"># AI2-THOR</span>
-pip install ai2thor</pre>
-                </div>
-              </div>
-              <p class="mt-4">
-                After installation, environments expose the usual loop you would expect:
-                <code class="setup-inline-code">reset()</code>,
-                <code class="setup-inline-code">step()</code>, and an action schema that the agent can
-                consume.
-              </p>
-            </section>
-
-            <!-- Environment Overview -->
-            <hr />
-            <section id="environment-overview" class="mb-6">
-              <h2 class="title is-4 heading-display">Environment Overview</h2>
-              <p>
-                MiniGrid is the fastest way to validate an agent configuration locally. DeliveryBench
-                is useful when you want a richer benchmark flow, while THOR is best when you need a
-                more grounded 3D embodied environment.
-              </p>
-            </section>
-
-            <!-- MiniGrid Environments -->
-            <hr />
-            <section id="minigrid-environments" class="mb-6">
-              <h2 class="title is-4 heading-display">MiniGrid Environments</h2>
-              <p>
-                The following presets are exposed directly in the playground and example scripts.
-              </p>
-              <div class="box mt-4 p-0 overflow-hidden">
-                <table class="table is-striped is-fullwidth mb-0">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>MiniGrid-Empty-5x5-v0</code></td>
-                      <td>Simple navigation</td>
-                    </tr>
-                    <tr>
-                      <td><code>MiniGrid-DoorKey-5x5-v0</code></td>
-                      <td>Find key, open door, and reach goal</td>
-                    </tr>
-                    <tr>
-                      <td><code>MiniGrid-DoorKey-6x6-v0</code></td>
-                      <td>Larger key-door task</td>
-                    </tr>
-                    <tr>
-                      <td><code>MiniGrid-DoorKey-8x8-v0</code></td>
-                      <td>Even larger variant</td>
-                    </tr>
-                    <tr>
-                      <td><code>MiniGrid-MultiRoom-N2-S4-v0</code></td>
-                      <td>Multi-room navigation</td>
-                    </tr>
-                    <tr>
-                      <td><code>MiniGrid-MemoryS17Random-v0</code></td>
-                      <td>Memory-focused task</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <!-- Run Your First Agent -->
-            <hr />
-            <section id="run-first-agent" class="mb-6">
-              <h2 class="title is-4 heading-display">Run Your First Agent</h2>
-              <p>
-                Start with a simple MiniGrid loop, then move to a more capable reasoning module once
-                your environment and API key are configured.
-              </p>
-              <div class="code-panel mt-4">
-                <div class="code-toolbar">
-                  <span class="code-filename">terminal</span>
-                </div>
-                <div class="code-body">
-                  <pre><span class="cmt"># MiniGrid - simple reasoning (no llm)</span>
+# Example runs
 python examples/minigrid_example.py --env MiniGrid-DoorKey-5x5-v0 --no-llm
-
-<span class="cmt"># MiniGrid - ReAct reasoning</span>
 python examples/minigrid_react_example.py --env MiniGrid-DoorKey-5x5-v0
+python examples/deliverybench_example.py --reasoning-method react</code></pre>
+      </div>
+    </section>
 
-<span class="cmt"># MiniGrid - Guided Search</span>
-python examples/minigrid_example.py --reasoner guided_search
-
-<span class="cmt"># DeliveryBench</span>
-python examples/deliverybench_example.py --reasoning-method react</pre>
-                </div>
-              </div>
-            </section>
-
-            <!-- Quick Start Code -->
-            <hr />
-            <section id="quick-start-code" class="mb-6">
-              <h2 class="title is-4 heading-display">Quick Start Code</h2>
-              <p>
-                You can also compose the framework programmatically by importing the modules directly
-                and wiring them into an <code class="setup-inline-code">EmbodiedAgent</code>.
-              </p>
-              <div class="code-panel mt-4">
-                <div class="code-toolbar">
-                  <span class="code-filename">quick_start.py</span>
-                </div>
-                <div class="code-body">
-                  <pre><span class="kw">import</span> os
-<span class="kw">from</span> modules.llm <span class="kw">import</span> OpenAIClient
-<span class="kw">from</span> modules.reasoning <span class="kw">import</span> ReActReasoning
-<span class="kw">from</span> agents <span class="kw">import</span> EmbodiedAgent
-
-llm_client = OpenAIClient(
-    api_key=os.getenv(<span class="str">"OPENAI_API_KEY"</span>),
-    model=<span class="str">"gpt-4o-mini"</span>,
-)
-
-reasoning = ReActReasoning(
-    llm_client=llm_client,
-    enable_history=<span class="kw">True</span>,
-)
-
-agent = EmbodiedAgent(
-    perception=perception,
-    reasoning=reasoning,
-    memory=memory,
-)</pre>
-                </div>
-              </div>
-            </section>
-
-            <!-- Interactive Demo -->
-            <hr />
-            <section id="interactive-demo" class="mb-6">
-              <h2 class="title is-4 heading-display">Playground</h2>
-              <p>
-                Prefer a guided flow? Use the <a href="playground.html">playground</a>
-                to visually choose your modules and download a generated script.
-              </p>
-            </section>
-
-          </div>
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Module Configuration Principles</h2>
+        <div class="finding-grid">
+          <article class="finding-card">
+            <h3>Reasoning</h3>
+            <p>Use structured reasoning strategies for symbolic or shorter-horizon tasks.</p>
+          </article>
+          <article class="finding-card">
+            <h3>Memory</h3>
+            <p>Prioritize representation alignment over context volume for long-horizon stability.</p>
+          </article>
+          <article class="finding-card">
+            <h3>Reflection</h3>
+            <p>Add reflection to stabilize weak pairings and reduce compounding action errors.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Footer ─────────────────────────────────────────────── -->
-  <footer class="footer site-footer">
-    <div class="content has-text-centered">
-      <p>
-        AgentFactory &mdash;
-        <a href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">GitHub</a>
-      </p>
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Benchmark and Artifacts</h2>
+        <ul class="bullets">
+          <li><a href="assets/docs/13434_AgentSpec_A_Modular_Spec.pdf" target="_blank" rel="noopener">Paper PDF</a></li>
+          <li><a href="assets/images/figures/final_main_results_compact.png" target="_blank" rel="noopener">Main results figure</a></li>
+          <li><a href="assets/images/analysis/qwen35_9b_pareto_two_panel.png" target="_blank" rel="noopener">Pareto curve figure (PNG)</a></li>
+          <li><a href="assets/images/case-studies/deliverybench-case.png" target="_blank" rel="noopener">DeliveryBench case study (PNG)</a></li>
+          <li><a href="assets/images/case-studies/alfred-case.png" target="_blank" rel="noopener">ALFRED case study (PNG)</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container is-max-desktop has-text-centered">
+      <p>AgentSpec documentation synced with latest website assets.</p>
     </div>
   </footer>
 
-  <!-- ── Scripts ────────────────────────────────────────────── -->
-  <script src="js/fontawesome.all.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Navbar burger toggle
-      const burgers = document.querySelectorAll('.navbar-burger');
-      burgers.forEach(burger => {
-        burger.addEventListener('click', () => {
+    document.addEventListener("DOMContentLoaded", function () {
+      const burgers = document.querySelectorAll(".navbar-burger");
+      burgers.forEach((burger) => {
+        burger.addEventListener("click", () => {
           const target = document.getElementById(burger.dataset.target);
-          burger.classList.toggle('is-active');
-          target.classList.toggle('is-active');
+          burger.classList.toggle("is-active");
+          target.classList.toggle("is-active");
         });
       });
-
-      // Sidebar scroll spy
-      const links = Array.from(document.querySelectorAll('.menu-list a'));
-      const sections = links
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
-
-      function setActive(id) {
-        links.forEach(link => {
-          const isMatch = link.getAttribute('href') === `#${id}`;
-          if (isMatch) {
-            link.classList.add('is-active');
-          } else {
-            link.classList.remove('is-active');
-          }
-        });
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        const visible = entries
-          .filter(entry => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) {
-          setActive(visible.target.id);
-        }
-      }, {
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: [0.2, 0.4, 0.6]
-      });
-
-      sections.forEach(section => observer.observe(section));
     });
   </script>
 </body>
-
 </html>

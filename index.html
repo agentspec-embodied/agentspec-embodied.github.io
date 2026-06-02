@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AgentSpec: A Modular Specification Framework for Controlled Analysis of Embodied Agents</title>
-  <meta name="description"
-    content="AgentSpec: a composable specification framework for controlled analysis of embodied agents across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR." />
-
-  <!-- Bulma + extensions -->
+  <meta
+    name="description"
+    content="AgentSpec provides a modular specification framework for controlled analysis of embodied agents across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/agentspec-logo.svg" />
   <link rel="stylesheet" href="css/bulma.min.css" />
-  <link rel="stylesheet" href="css/bulma-carousel.min.css" />
-  <link rel="stylesheet" href="css/bulma-slider.min.css" />
-  <link rel="stylesheet" href="css/fontawesome.all.min.css" />
-
-  <!-- Project overrides -->
-  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
-
 <body>
-
-  <!-- ── Navbar ─────────────────────────────────────────────── -->
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-fixed-top top-nav" role="navigation" aria-label="main navigation">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item has-text-weight-semibold" href="index.html">
-          <span class="icon has-text-info mr-2"><i class="fas fa-robot"></i></span>
-          AgentSpec
+        <a class="navbar-item brand" href="index.html">
+          <img src="assets/agentspec-logo.svg" alt="AgentSpec logo" class="brand-logo" />
+          <span>AgentSpec</span>
         </a>
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mainNav">
           <span aria-hidden="true"></span>
@@ -36,820 +28,215 @@
       </div>
       <div id="mainNav" class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item is-active" href="index.html">
-            <span class="icon"><i class="fas fa-home"></i></span><span>Home</span>
-          </a>
-          <a class="navbar-item" href="docs.html">
-            <span class="icon"><i class="fas fa-book"></i></span><span>Docs</span>
-          </a>
-          <a class="navbar-item" href="playground/playground.html">
-            <span class="icon"><i class="fas fa-cogs"></i></span><span>Playground</span>
-          </a>
-          <a class="navbar-item" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">
-            <span class="icon"><i class="fab fa-github"></i></span><span>GitHub</span>
-          </a>
+          <a class="navbar-item is-active" href="index.html">Home</a>
+          <a class="navbar-item" href="docs.html">Docs</a>
+          <a class="navbar-item" href="playground/playground.html">Playground</a>
+          <a class="navbar-item" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- ── Hero ───────────────────────────────────────────────── -->
-  <section class="hero is-medium has-navbar-offset">
-    <div class="hero-body">
-      <div class="container">
-        <div class="hero-stack has-text-centered">
-          <div class="hero-brand-row">
-            <img src="assests/logo.png" alt="AgentSpec" class="hero-logo" width="96" height="96" decoding="async" />
-            <p class="hero-wordmark">
-              <span class="hero-wordmark__soft">Agent</span><span class="hero-wordmark__strong">Spec</span>
-            </p>
-          </div>
-          <h1 class="hero-headline">
-            <span class="hero-headline__line">A Modular Specification Framework for</span>
-            <span class="hero-headline__line">Controlled Analysis of Embodied Agents</span>
-          </h1>
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="container is-max-desktop has-text-centered">
+        <div class="hero-logo-row">
+          <img src="assets/agentspec-logo.svg" alt="AgentSpec logo" class="hero-title-logo" />
+          <span class="hero-logo-text">AgentSpec</span>
         </div>
-
-        <!-- Pill links -->
-        <div class="buttons is-centered mt-5">
-          <a href="#" class="button is-rounded is-outlined abstract-pill">
-            <span class="icon"><i class="fas fa-scroll"></i></span>
-            <span>arXiv</span>
-          </a>
-          <a href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener"
-            class="button is-rounded is-outlined abstract-pill">
-            <span class="icon"><i class="fab fa-github"></i></span>
-            <span>Code</span>
-          </a>
-          <a href="#" class="button is-rounded is-outlined abstract-pill">
-            <span class="icon"><i class="fab fa-youtube"></i></span>
-            <span>YouTube</span>
-          </a>
-          <a href="#" class="button is-rounded is-outlined abstract-pill">
-            <span class="icon"><i class="fas fa-database"></i></span>
-            <span>SAF</span>
-          </a>
-          <a href="docs.html" class="button is-rounded is-outlined abstract-pill">
-            <span class="icon"><i class="fas fa-book"></i></span>
-            <span>Docs</span>
-          </a>
+        <h1 class="title is-1 paper-title">
+          AgentSpec: A Modular Specification Framework for Controlled Analysis of Embodied Agents
+        </h1>
+        <p class="authors">A modular framework for controlled embodied-agent analysis</p>
+        <p class="affiliations">Code, benchmark assets, and docs are continuously updated on this site.</p>
+        <div class="links-row">
+          <a class="paper-pill" href="assets/docs/13434_AgentSpec_A_Modular_Spec.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
+          <a class="paper-pill" href="assets/video/agentspec.mov" target="_blank" rel="noopener">Demo Video</a>
+          <a class="paper-pill" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">Code</a>
+          <a class="paper-pill" href="docs.html">Documentation</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Demo Video ─────────────────────────────────────────── -->
-  <section class="section">
-    <div class="container">
-      <h2 class="title is-2 has-text-centered heading-display mb-5">Demo Video</h2>
-      <div class="abstract-copy has-text-centered mb-5">
-        <p>See AgentSpec in action with a comprehensive demonstration.</p>
-      </div>
-      <figure class="overview-figure">
-        <div class="demo-video-shell">
-          <video class="demo-video-player media-rounded" controls preload="metadata" poster="">
-            <source src="" type="video/mp4" />
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Demo Video</h2>
+        <div class="media-card">
+          <video class="media-video" controls preload="metadata">
+            <source src="assets/video/agentspec.mov" type="video/quicktime" />
+            <source src="assets/video/agentspec.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          <p class="video-note">
+            If your browser does not autoplay QuickTime streams, download and view directly:
+            <a href="assets/video/agentspec.mov" target="_blank" rel="noopener">agentspec.mov</a>.
+          </p>
         </div>
-      </figure>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- ── Overview (renamed from Abstract) ───────────────────── -->
-  <section class="section">
-    <div class="container">
-      <h2 class="title is-2 has-text-centered heading-display mb-5">Overview</h2>
-      <div class="abstract-copy" id="abstract-copy" data-abstract-src="lists/abstract.md" aria-live="polite"></div>
-      <figure class="overview-figure mt-5">
-        <img src="assests/Main_figure_modify.png" alt="AgentSpec framework diagram"
-          class="overview-diagram media-rounded" loading="lazy" decoding="async" />
-      </figure>
-      <div class="abstract-copy overview-conclusion mt-4">
-        <p>Evaluations across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR show that performance depends not only on
-          the strength of individual components but also on their interactions. Modular recomposition can outperform
-          monolithic baselines, especially in long-horizon embodied tasks that benefit from state-aware,
-          trajectory-level memory and structured decision making. By exposing a clear design space, AgentSpec
-          provides a foundation for agents that are more capable, more analyzable, and more scientifically grounded.
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Abstract</h2>
+        <p>
+          LLM-based embodied agents are increasingly built from modules such as reasoning, memory, reflection, action execution, and learning. However, these modules are often embedded in tightly coupled pipelines, making it hard to isolate component contributions or study interaction effects. AgentSpec introduces a modular specification framework that represents embodied agents as explicit compositions of reusable policy components with standardized interfaces.
+        </p>
+        <p>
+          We instantiate AgentSpec across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR, and run controlled studies over reasoning, memory, reflection, and reinforcement learning modules. Our experiments show that performance is jointly determined by component quality and representation compatibility. Structured multi-granularity memory improves long-horizon state tracking, reasoning and memory exhibit strong complementarity, and lightweight modular compositions can achieve stronger performance-cost trade-offs than heavier misaligned pipelines.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Architecture Overview ──────────────────────────────── -->
-  <section class="section">
-    <div class="container">
-      <div class="section-intro section-intro--left mb-5">
-        <h2 class="title is-3 heading-display">Architecture Overview</h2>
-        <p class="subtitle is-6">Every layer can be independently replaced while keeping the same execution interface.
-        </p>
-      </div>
-
-      <div class="module-slider" data-module-grid>
-
-        <!-- ── Data flow hint ───────────────────────────────── -->
-        <div class="module-flow-hint" aria-hidden="true">
-          <span class="module-flow-hint__label">Input</span>
-          <span class="module-flow-hint__arrow">→</span>
-          <span class="module-flow-hint__label">Processing</span>
-          <span class="module-flow-hint__arrow">→</span>
-          <span class="module-flow-hint__label">Decision</span>
-          <span class="module-flow-hint__arrow">→</span>
-          <span class="module-flow-hint__label">Refinement</span>
-          <span class="module-flow-hint__arrow">→</span>
-          <span class="module-flow-hint__label">Adaptation</span>
-        </div>
-
-        <!-- ── Group: Core Cognition ─────────────────────────── -->
-        <div class="module-group">
-          <p class="module-group__label">Core Cognition</p>
-          <div class="module-grid" aria-label="Core cognition modules">
-
-            <!-- Perception -->
-            <article class="module-card" data-module="perception" data-accent="cyan" role="button" tabindex="0"
-              aria-expanded="false" aria-controls="module-details-perception">
-              <div class="module-card__accent-bar"></div>
-              <div class="card-content">
-                <div class="module-card__step">1</div>
-                <div class="module-card__top">
-                  <div class="module-card__icon">
-                    <!-- Eye / sensor -->
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                      <line x1="12" y1="5" x2="12" y2="3" />
-                      <line x1="17.66" y1="6.34" x2="19.07" y2="4.93" />
-                      <line x1="6.34" y1="6.34" x2="4.93" y2="4.93" />
-                    </svg>
-                  </div>
-                  <h3 class="module-card__title">Perception</h3>
-                  <span class="module-card__chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" focusable="false">
-                      <path d="M6.5 9.5l5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2.25"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </div>
-                <ul class="module-card__bullets">
-                  <li>Normalizes raw observations to a unified schema</li>
-                  <li>Handles symbolic, visual &amp; textual inputs</li>
-                  <li>Decouples environment format from agent logic</li>
-                </ul>
-                <div class="module-card__details" id="module-details-perception" aria-label="Perception details"></div>
-              </div>
-            </article>
-
-            <!-- Reasoning -->
-            <article class="module-card" data-module="reasoning" data-accent="purple" role="button" tabindex="0"
-              aria-expanded="false" aria-controls="module-details-reasoning">
-              <div class="module-card__accent-bar"></div>
-              <div class="card-content">
-                <div class="module-card__step">2</div>
-                <div class="module-card__top">
-                  <div class="module-card__icon">
-                    <!-- Graph / tree branches -->
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="4" r="2" />
-                      <circle cx="4" cy="20" r="2" />
-                      <circle cx="20" cy="20" r="2" />
-                      <circle cx="12" cy="14" r="2" />
-                      <line x1="12" y1="6" x2="12" y2="12" />
-                      <line x1="11" y1="15.5" x2="5.5" y2="18.5" />
-                      <line x1="13" y1="15.5" x2="18.5" y2="18.5" />
-                    </svg>
-                  </div>
-                  <h3 class="module-card__title">Reasoning</h3>
-                  <span class="module-card__chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" focusable="false">
-                      <path d="M6.5 9.5l5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2.25"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </div>
-                <ul class="module-card__bullets">
-                  <li>Supports ReAct, CoT, ToT, Guided Search, RAP</li>
-                  <li>Maps state + memory → action proposal</li>
-                  <li>Swap paradigm without changing other modules</li>
-                </ul>
-                <div class="module-card__details" id="module-details-reasoning" aria-label="Reasoning details"></div>
-              </div>
-            </article>
-
-            <!-- Memory -->
-            <article class="module-card" data-module="memory" data-accent="teal" role="button" tabindex="0"
-              aria-expanded="false" aria-controls="module-details-memory">
-              <div class="module-card__accent-bar"></div>
-              <div class="card-content">
-                <div class="module-card__step">3</div>
-                <div class="module-card__top">
-                  <div class="module-card__icon">
-                    <!-- Database stack -->
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <ellipse cx="12" cy="5" rx="9" ry="3" />
-                      <path d="M21 5v4c0 1.66-4.03 3-9 3s-9-1.34-9-3V5" />
-                      <path d="M21 9v4c0 1.66-4.03 3-9 3s-9-1.34-9-3V9" />
-                      <path d="M21 13v4c0 1.66-4.03 3-9 3s-9-1.34-9-3v-4" />
-                    </svg>
-                  </div>
-                  <h3 class="module-card__title">Memory</h3>
-                  <span class="module-card__chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" focusable="false">
-                      <path d="M6.5 9.5l5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2.25"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </div>
-                <ul class="module-card__bullets">
-                  <li>Episodic &amp; semantic memory backends</li>
-                  <li>Retrieve task-relevant context on demand</li>
-                  <li>Pluggable: graph, vector, structured DB</li>
-                </ul>
-                <div class="module-card__details" id="module-details-memory" aria-label="Memory details"></div>
-              </div>
-            </article>
-
-          </div><!-- /module-grid core -->
-        </div><!-- /module-group core -->
-
-        <!-- ── Group: Self-Improvement ───────────────────────── -->
-        <div class="module-group module-group--meta">
-          <p class="module-group__label">Self-Improvement</p>
-          <div class="module-grid module-grid--meta" aria-label="Self-improvement modules">
-
-            <!-- Reflection -->
-            <article class="module-card" data-module="reflection" data-accent="amber" role="button" tabindex="0"
-              aria-expanded="false" aria-controls="module-details-reflection">
-              <div class="module-card__accent-bar"></div>
-              <div class="card-content">
-                <div class="module-card__step">4</div>
-                <div class="module-card__top">
-                  <div class="module-card__icon">
-                    <!-- Feedback loop / refresh arrows -->
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="1 4 1 10 7 10" />
-                      <polyline points="23 20 23 14 17 14" />
-                      <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15" />
-                    </svg>
-                  </div>
-                  <h3 class="module-card__title">Reflection</h3>
-                  <span class="module-card__chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" focusable="false">
-                      <path d="M6.5 9.5l5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2.25"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </div>
-                <ul class="module-card__bullets">
-                  <li>Critiques &amp; revises action proposals</li>
-                  <li>Step-level and trajectory-level refinement</li>
-                  <li>Accumulates failure signals for future steps</li>
-                </ul>
-                <div class="module-card__details" id="module-details-reflection" aria-label="Reflection details"></div>
-              </div>
-            </article>
-
-            <!-- Learning -->
-            <article class="module-card" data-module="learning" data-accent="green" role="button" tabindex="0"
-              aria-expanded="false" aria-controls="module-details-learning">
-              <div class="module-card__accent-bar"></div>
-              <div class="card-content">
-                <div class="module-card__step">5</div>
-                <div class="module-card__top">
-                  <div class="module-card__icon">
-                    <!-- Reward / ascending curve -->
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                    </svg>
-                  </div>
-                  <h3 class="module-card__title">Learning</h3>
-                  <span class="module-card__chev" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" focusable="false">
-                      <path d="M6.5 9.5l5.5 5.5 5.5-5.5" fill="none" stroke="currentColor" stroke-width="2.25"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </span>
-                </div>
-                <ul class="module-card__bullets">
-                  <li>Uses reinforcement learning &amp; reward signals</li>
-                  <li>Optimizes policies via environmental feedback</li>
-                  <li>Adapts long-horizon decision strategies</li>
-                </ul>
-                <div class="module-card__details" id="module-details-learning" aria-label="Learning details"></div>
-              </div>
-            </article>
-
-          </div><!-- /module-grid meta -->
-        </div><!-- /module-group meta -->
-
-      </div><!-- /module-slider -->
-
-      <div class="architecture-framework mt-5">
-        <div class="section-intro section-intro--left mb-4">
-          <h3 class="title is-4 heading-display mt-2">Our Framework</h3>
-        </div>
-        <div class="content architecture-framework-copy" id="framework-copy" data-framework-src="lists/framework.md"
-          aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Coverage (tree) ─────────────────────────────────────── -->
-  <section class="section has-background-white-bis">
-    <div class="container">
-      <div class="section-intro section-intro--left section-intro--wide mb-5">
-        <p class="section-eyebrow">Coverage</p>
-        <h2 class="title is-2 heading-display mt-2">Covering Every Module and Domain</h2>
-        <p class="subtitle is-6">
-          AgentSpec covers rigorous and adaptable setups for all major agent cognitive loops, spanning from memory
-          architectures to reasoning paradigms and reflection mechanisms.
-        </p>
-      </div>
-
-      <div class="ctree-shell" data-coverage-tree></div>
-    </div>
-  </section>
-
-  <!-- ── Key Features ───────────────────────────────────────── -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-intro section-intro--center mb-5">
-        <h2 class="title is-3 heading-display">Key Features</h2>
-        <p class="subtitle is-6">Three core contributions that make AgentSpec useful for controlled embodied-agent
-          research.</p>
-      </div>
-      <div class="columns is-multiline key-features-row">
-        <div class="column is-4">
-          <div class="card feature-card">
-            <div class="card-content">
-              <div class="is-flex is-align-items-start mb-3 flex-gap-xs">
-                <span class="feature-icon">1</span>
-                <h3 class="title is-5 mb-0">Modular Design Space</h3>
-              </div>
-              <p class="has-text-grey">
-                Defines a unified Perception–Memory–Reasoning–Reflection–Action loop where every
-                module is independently replaceable, enabling systematic study of how each
-                component contributes to overall agent performance.
-              </p>
-              <figure class="feature-card-figure">
-                <img src="assests/feat1.png" width="400" height="520"
-                  alt="Unified Perception diagram: multimodal inputs flow into UnifiedAgentInput with vision, text, state, and action schema fields."
-                  class="feature-card-image" loading="lazy" decoding="async" />
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="column is-4">
-          <div class="card feature-card">
-            <div class="card-content">
-              <div class="is-flex is-align-items-start mb-3 flex-gap-xs">
-                <span class="feature-icon">2</span>
-                <h3 class="title is-5 mb-0">Controlled Analysis Platform</h3>
-              </div>
-              <p class="has-text-grey">
-                Supports reasoning (ReAct, CoT, Plan&amp;Solve, MAD, ToT), memory (Base,
-                DynamicCheatsheet, MemoryBank, OpenClaw), and reflection (Reflexion, Self-Refine)
-                modules that can be swapped independently for rigorous ablation studies.
-              </p>
-              <figure class="feature-card-figure">
-                <img src="assests/feat2.png" width="640" height="360"
-                  alt="Diagram: pluggable reasoning and memory modules connect to the agent loop; controlled ablations swap components independently."
-                  class="feature-card-image" loading="lazy" decoding="async" />
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="column is-4">
-          <div class="card feature-card">
-            <div class="card-content">
-              <div class="is-flex is-align-items-start mb-3 flex-gap-xs">
-                <span class="feature-icon">3</span>
-                <h3 class="title is-5 mb-0">Cross-Benchmark Findings</h3>
-              </div>
-              <p class="has-text-grey">
-                Comprehensive evaluation across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR
-                reveals that performance is driven more by module interaction than individual
-                component quality — structured memory and reflection matter most.
-              </p>
-              <figure class="feature-card-figure">
-                <img src="assests/feat3.png" width="800" height="600"
-                  alt="Shared design space: modular perception, reasoning, memory, action, and interface; interchangeability across agent models; benefits and outcomes."
-                  class="feature-card-image" loading="lazy" decoding="async" />
-              </figure>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Environment Setup ──────────────────────────────────── -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-intro section-intro--left mb-4">
-        <h2 class="title is-3 heading-display">Environment Setup</h2>
-      </div>
-      <div class="content env-setup-copy" id="env-setup-copy" data-setup-src="lists/env_setup.md" aria-live="polite">
-      </div>
-      <div class="env-gallery-wrap mt-5">
-        <div class="env-gallery-track" aria-label="Environment image gallery">
-          <figure class="env-gallery-card">
-            <img src="assests/environments/minigrid_env.png" alt="MiniGrid environment preview"
-              class="env-gallery-image" loading="lazy" decoding="async" />
-            <figcaption>MiniGrid</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/alfred_env.png" alt="ALFRED environment preview" class="env-gallery-image"
-              loading="lazy" decoding="async" />
-            <figcaption>ALFRED</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/robothor_env.png" alt="RoboTHOR environment preview"
-              class="env-gallery-image" loading="lazy" decoding="async" />
-            <figcaption>RoboTHOR</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/delivery_bench_env.png" alt="DeliveryBench environment preview"
-              class="env-gallery-image" loading="lazy" decoding="async" />
-            <figcaption>DeliveryBench</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/minigrid_env.png" alt="MiniGrid environment preview"
-              class="env-gallery-image" loading="lazy" decoding="async" />
-            <figcaption>MiniGrid</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/alfred_env.png" alt="ALFRED environment preview" class="env-gallery-image"
-              loading="lazy" decoding="async" />
-            <figcaption>ALFRED</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/robothor_env.png" alt="RoboTHOR environment preview"
-              class="env-gallery-image" loading="lazy" decoding="async" />
-            <figcaption>RoboTHOR</figcaption>
-          </figure>
-          <figure class="env-gallery-card">
-            <img src="assests/environments/delivery_bench_env.png" alt="DeliveryBench environment preview"
-              class="env-gallery-image" loading="lazy" decoding="async" />
-            <figcaption>DeliveryBench</figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Evaluation Results ─────────────────────────────────── -->
-  <section class="section section-alt" id="eval-results">
-    <div class="container">
-      <div class="section-intro section-intro--left mb-5">
-        <h2 class="title is-3 heading-display">Evaluation Results</h2>
-        <p class="subtitle is-6">
-          Performance across backbone models for representative module configurations on four benchmarks.
-          Hover over any data point to see the full configuration details.
-        </p>
-      </div>
-      <div class="box eval-results-card">
-        <div id="linechart-legend" class="linechart-legend mb-4" aria-hidden="true"></div>
-        <div id="eval-linecharts" class="linechart-grid" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Key Findings (from lists/findings.md) ─────────────── -->
-  <section class="section section-key-findings" aria-labelledby="key-findings-heading">
-    <div class="container">
-      <div class="section-intro section-intro--center mb-5">
-        <h2 id="key-findings-heading" class="title is-3 heading-display">Key Findings</h2>
-        <p class="subtitle is-6">Demonstrating that performance is driven more by module interaction than by individual
-          component quality.</p>
-      </div>
-      <div class="kf-grid">
-
-        <article class="kf-card" data-accent="blue">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">1</span>
-            <h3 class="kf-card__title">Memory Architecture</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M9.5 2A2.5 2.5 0 0 0 7 4.5v0A2.5 2.5 0 0 0 4.5 7v0A2.5 2.5 0 0 0 3 9.5a2.5 2.5 0 0 0 .5 1.5A2.5 2.5 0 0 0 3 13a2.5 2.5 0 0 0 1 2 2.5 2.5 0 0 0 1 4 2.5 2.5 0 0 0 4.5-1V2Z" />
-                <path
-                  d="M14.5 2A2.5 2.5 0 0 1 17 4.5v0A2.5 2.5 0 0 1 19.5 7v0A2.5 2.5 0 0 1 21 9.5a2.5 2.5 0 0 1-.5 1.5 2.5 2.5 0 0 1 .5 2 2.5 2.5 0 0 1-1 2 2.5 2.5 0 0 1-1 4 2.5 2.5 0 0 1-4.5-1V2Z" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>Memory utility is defined by structure (e.g., action-oriented indexing) rather than raw context volume.
-            </p>
-            <p>Selective retrieval is critical to minimize noise and ensure high-fidelity decision-making at inference.
-            </p>
-          </div>
-        </article>
-
-        <article class="kf-card" data-accent="green">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">2</span>
-            <h3 class="kf-card__title">Hierarchical Abstraction</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2 2 7l10 5 10-5-10-5Z" />
-                <path d="m2 12 10 5 10-5" />
-                <path d="m2 17 10 5 10-5" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>Long-horizon planning requires distilled policy-level insights (summarized experiences) to avoid the
-              computational and cognitive overhead of processing raw trajectory fragments.</p>
-          </div>
-        </article>
-
-        <article class="kf-card" data-accent="purple">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">3</span>
-            <h3 class="kf-card__title">Multi-Granularity</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M19.5 11h-2a2 2 0 1 0 0-4h-3V4.5a2 2 0 1 0-4 0V7H7v2.5a2 2 0 1 1 0 4H4.5v3.5a2 2 0 1 1 4 0V19h3v-2.5a2 2 0 1 1 4 0V19h3.5v-2a2 2 0 1 0 0-4h.5Z" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>Hybrid modules like <em>MemoryBank</em> provide the highest robustness by offering concurrent access to
-              raw data and semantic summaries, accommodating diverse reasoning styles.</p>
-          </div>
-        </article>
-
-        <article class="kf-card" data-accent="orange">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">4</span>
-            <h3 class="kf-card__title">Abstracted Memory</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="9" y1="13" x2="15" y2="13" />
-                <line x1="9" y1="17" x2="15" y2="17" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>High-level, distilled experiences (e.g., <em>DynamicCheatsheet</em>) outperform raw trajectory fragments,
-              which often introduce noise into planning-oriented reasoning.</p>
-          </div>
-        </article>
-
-        <article class="kf-card" data-accent="rose">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">5</span>
-            <h3 class="kf-card__title">Multi-Agent Resilience</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>Multi-agent systems (<em>MAD</em>) exhibit significantly lower sensitivity to memory quality. Collective
-              reasoning and internal error-correction preserve decision quality even when retrieved cues are coarse or
-              partially relevant.</p>
-          </div>
-        </article>
-
-        <article class="kf-card" data-accent="teal">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">6</span>
-            <h3 class="kf-card__title">Reflective Correctness</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 4 23 10 17 10" />
-                <polyline points="1 20 1 14 7 14" />
-                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>Reflection consistently improves decision-making by benchmarking candidate actions against immediate
-              environmental feedback, showing particular efficacy in stabilizing weak reasoning-memory pairings.</p>
-          </div>
-        </article>
-
-        <article class="kf-card" data-accent="sky">
-          <header class="kf-card__head">
-            <span class="kf-card__num" aria-hidden="true">7</span>
-            <h3 class="kf-card__title">Domain Specificity</h3>
-            <span class="kf-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
-              </svg>
-            </span>
-          </header>
-          <div class="kf-card__divider" aria-hidden="true">
-            <span class="kf-card__rule"></span>
-            <span class="kf-card__dot"></span>
-          </div>
-          <div class="kf-card__body">
-            <p>Module efficacy is environment-dependent. Short-horizon tasks are driven by structured reasoning, while
-              long-horizon environments (e.g., <em>ALFRED</em>) are bottlenecked by the need for trajectory-level
-              episodic memory to prevent repetitive failure loops.</p>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Case Study ─────────────────────────────────────────── -->
-  <section class="section section-case-study" id="case-study">
-    <div class="container">
-      <div class="section-intro section-intro--center mb-5">
-        <p class="section-eyebrow">Case Study</p>
-        <h2 class="title is-3 heading-display mt-2">Environment-Specific Examples</h2>
-        <p class="subtitle is-6">Trajectory level analysis of AgentSpec on different environment baselines.</p>
-      </div>
-
-      <div class="case-study-switcher" role="tablist" aria-label="Case study environments">
-        <button type="button" class="case-study-chip is-active" role="tab" aria-selected="true"
-          data-case-study-target="minigrid" data-case-study-label="MiniGrid"
-          data-case-study-src="assests/case_study/minigrid.png">MiniGrid</button>
-        <button type="button" class="case-study-chip" role="tab" aria-selected="false" data-case-study-target="alfred"
-          data-case-study-label="ALFRED" data-case-study-src="assests/case_study/minigrid.png">ALFRED</button>
-        <button type="button" class="case-study-chip" role="tab" aria-selected="false" data-case-study-target="robothor"
-          data-case-study-label="RoboTHOR" data-case-study-src="assests/case_study/minigrid.png">RoboTHOR</button>
-        <button type="button" class="case-study-chip" role="tab" aria-selected="false"
-          data-case-study-target="deliverybench" data-case-study-label="DeliveryBench"
-          data-case-study-src="assests/case_study/minigrid.png">DeliveryBench</button>
-      </div>
-
-      <div class="box case-study-panel">
-        <div class="case-study-panel__header">
-          <div>
-            <p class="case-study-kicker">Selected environment</p>
-            <h3 id="case-study-title" class="title is-5 heading-display mb-0">MiniGrid</h3>
-          </div>
-          <span class="tag is-light is-rounded">Representative figure</span>
-        </div>
-        <figure class="case-study-figure">
-          <img id="case-study-image" src="assests/case_study/minigrid.png" alt="MiniGrid case study figure"
-            class="case-study-image" loading="lazy" decoding="async" />
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Overview Figure</h2>
+        <figure class="figure-card">
+          <img src="assets/images/figures/main_3.png" alt="AgentSpec modular design space overview" loading="lazy" />
+          <figcaption>
+            AgentSpec turns tightly coupled embodied-agent pipelines into a controlled modular design space with fixed interfaces.
+          </figcaption>
         </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── From Setup to Evaluation ───────────────────────────── -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-intro section-intro--left mb-5">
-        <h2 class="title is-3 heading-display">From Setup to Evaluation</h2>
-        <p class="subtitle is-6">A direct workflow for fast experiments.</p>
-      </div>
-      <div class="columns">
-        <div class="column is-4">
-          <div class="card flow-step">
-            <div class="card-content">
-              <span class="step-num">01</span>
-              <h3 class="title is-5 mt-2">Install + Configure</h3>
-              <p class="has-text-grey">Set up dependencies, environment adapters, and API keys.</p>
-            </div>
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Framework Design</h2>
+        <div class="columns is-variable is-5">
+          <div class="column is-7">
+            <p>
+              AgentSpec organizes policy execution into a modular
+              <strong>Perception-Memory-Reasoning-Reflection-Action</strong>
+              loop, with optional reinforcement learning for optimization.
+            </p>
+            <ul class="bullets">
+              <li><strong>Perception</strong> maps raw observations to standardized state.</li>
+              <li><strong>Memory</strong> retrieves task-relevant history under typed interfaces.</li>
+              <li><strong>Reasoning</strong> proposes decisions compatible with downstream action modules.</li>
+              <li><strong>Reflection</strong> critiques and revises candidate decisions.</li>
+              <li><strong>Learning</strong> can be attached to jointly improve policy behavior.</li>
+            </ul>
+            <p>
+              This decomposition enables controlled ablations and recombination across environments without rebuilding the full agent pipeline.
+            </p>
           </div>
-        </div>
-        <div class="column is-4">
-          <div class="card flow-step">
-            <div class="card-content">
-              <span class="step-num">02</span>
-              <h3 class="title is-5 mt-2">Compose Agent</h3>
-              <p class="has-text-grey">Use the playground UI to generate runnable Python setup code.</p>
-            </div>
-          </div>
-        </div>
-        <div class="column is-4">
-          <div class="card flow-step">
-            <div class="card-content">
-              <span class="step-num">03</span>
-              <h3 class="title is-5 mt-2">Run Benchmarks</h3>
-              <p class="has-text-grey">Execute repeatable loops and compare module combinations.</p>
-            </div>
+          <div class="column is-5">
+            <figure class="figure-card compact">
+              <img src="assets/images/figures/framework_4.png" alt="AgentSpec modular loop and interfaces" loading="lazy" />
+            </figure>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Footer ─────────────────────────────────────────────── -->
-  <footer class="footer site-footer">
-    <div class="content has-text-centered">
-      <p>&copy; 2026 AgentSpec Team. All rights reserved.</p>
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Main Findings</h2>
+        <div class="finding-grid">
+          <article class="finding-card">
+            <h3>Compatibility Matters</h3>
+            <p>Module strength alone is not sufficient; memory representation must match the reasoning strategy to produce gains.</p>
+          </article>
+          <article class="finding-card">
+            <h3>Environment Dependence</h3>
+            <p>Short symbolic tasks benefit more from per-step reasoning, while long-horizon embodied tasks are bottlenecked by state tracking.</p>
+          </article>
+          <article class="finding-card">
+            <h3>Efficiency-Aware Composition</h3>
+            <p>Performance improvements do not come from token usage alone; lightweight but aligned modules often offer better trade-offs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Main Experimental Results</h2>
+        <figure class="figure-card">
+          <img src="assets/images/figures/final_main_results_compact.png" alt="Main benchmark results across embodied tasks" loading="lazy" />
+          <figcaption>
+            Main benchmark performance across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR under controlled module compositions.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Pareto Analysis</h2>
+        <figure class="figure-card">
+          <img src="assets/images/analysis/qwen35_9b_pareto_two_panel.png" alt="Pareto curve for Qwen3.5 9B experiments" loading="lazy" />
+          <figcaption>Pareto frontier showing performance-cost trade-offs under modular compositions.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Case Studies</h2>
+        <div class="columns is-variable is-5">
+          <div class="column">
+            <figure class="figure-card">
+              <img src="assets/images/case-studies/deliverybench-case.png" alt="DeliveryBench case study figure" loading="lazy" />
+            </figure>
+            <p class="pdf-caption">DeliveryBench trajectory case study.</p>
+          </div>
+          <div class="column">
+            <figure class="figure-card">
+              <img src="assets/images/case-studies/alfred-case.png" alt="ALFRED case study figure" loading="lazy" />
+            </figure>
+            <p class="pdf-caption">ALFRED task-level case study.</p>
+          </div>
+        </div>
+        <figure class="figure-card mt-4">
+          <img src="assets/images/analysis/error_analysis.png" alt="Error analysis of module combinations" loading="lazy" />
+          <figcaption>Error analysis highlighting representation mismatch and failure loops.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Benchmark Scope</h2>
+        <p>
+          AgentSpec is evaluated on four embodied benchmarks with complementary challenges:
+          <strong>DeliveryBench</strong> (long-horizon planning under constraints),
+          <strong>ALFRED</strong> (compositional household manipulation),
+          <strong>MiniGrid</strong> (symbolic navigation under partial observability), and
+          <strong>RoboTHOR</strong> (realistic first-person navigation).
+        </p>
+      </div>
+    </section>
+
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">BibTeX</h2>
+        <pre class="bibtex-block"><code>@article{agentspec2026,
+  title={AgentSpec: A Modular Specification Framework for Controlled Analysis of Embodied Agents},
+  author={AgentSpec Team},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container is-max-desktop has-text-centered">
+      <p>AgentSpec website.</p>
     </div>
   </footer>
 
-  <!-- ── Scripts ────────────────────────────────────────────── -->
-  <script src="js/fontawesome.all.min.js"></script>
-  <script src="js/bulma-carousel.min.js"></script>
-  <script src="js/bulma-slider.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-  <script src="js/results-csv.js"></script>
-  <script src="js/home.js"></script>
-  <script src="js/linechart.js"></script>
-  <script src="js/components/coverage-tree.js"></script>
-  <script src="js/components/module-cards.js"></script>
   <script>
-    // Navbar burger toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const burgers = document.querySelectorAll('.navbar-burger');
-      burgers.forEach(burger => {
-        burger.addEventListener('click', () => {
+    document.addEventListener("DOMContentLoaded", function () {
+      const burgers = document.querySelectorAll(".navbar-burger");
+      burgers.forEach((burger) => {
+        burger.addEventListener("click", () => {
           const target = document.getElementById(burger.dataset.target);
-          burger.classList.toggle('is-active');
-          target.classList.toggle('is-active');
+          burger.classList.toggle("is-active");
+          target.classList.toggle("is-active");
         });
       });
     });
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const chips = document.querySelectorAll('[data-case-study-target]');
-      const image = document.getElementById('case-study-image');
-      const title = document.getElementById('case-study-title');
-
-      if (!chips.length || !image || !title) return;
-
-      const setActiveChip = (activeChip) => {
-        chips.forEach((chip) => {
-          const isActive = chip === activeChip;
-          chip.classList.toggle('is-active', isActive);
-          chip.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-      };
-
-      const showCaseStudy = (chip) => {
-        const label = chip.dataset.caseStudyLabel || chip.textContent.trim();
-        const src = chip.dataset.caseStudySrc || image.src;
-        image.src = src;
-        image.alt = `${label} case study figure`;
-        title.textContent = label;
-        setActiveChip(chip);
-      };
-
-      chips.forEach((chip) => {
-        chip.addEventListener('click', () => showCaseStudy(chip));
-        chip.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            showCaseStudy(chip);
-          }
-        });
-      });
-
-      showCaseStudy(document.querySelector('.case-study-chip.is-active') || chips[0]);
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadMarkdownSection('#framework-copy', 'lists/framework.md');
-    });
-
   </script>
 </body>
-
 </html>
