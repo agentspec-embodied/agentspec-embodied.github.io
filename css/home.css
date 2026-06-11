@@ -50,7 +50,9 @@ body {
 }
 
 .hero-section {
-  padding: 3.25rem 1rem 2rem;
+  padding: 3.25rem 1rem 2.4rem;
+  background: linear-gradient(180deg, #eef4ff 0%, #ffffff 100%);
+  border-bottom: 1px solid var(--line);
 }
 
 .hero-logo-row {
@@ -129,6 +131,16 @@ body {
   line-height: 1.2;
 }
 
+.section-title::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin-top: 0.45rem;
+  border-radius: 2px;
+  background: var(--brand);
+}
+
 .media-card,
 .figure-card,
 .finding-card {
@@ -158,6 +170,45 @@ body {
 .figure-card {
   margin: 0;
   padding: 0.7rem;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.05);
+}
+
+.figure-card.zoomable {
+  cursor: zoom-in;
+  transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.figure-card.zoomable:hover {
+  border-color: var(--brand);
+  box-shadow: 0 8px 22px rgba(32, 88, 204, 0.14);
+  transform: translateY(-2px);
+}
+
+.figure-card .zoom-hint {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(18, 25, 38, 0.68);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+
+.figure-card.zoomable:hover .zoom-hint {
+  opacity: 1;
+}
+
+.figure-card.fit-md {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .figure-card.compact {
@@ -245,8 +296,102 @@ body {
   line-height: 1.5;
 }
 
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+  background: rgba(10, 14, 22, 0.93);
+}
+
+.lightbox-overlay.is-open {
+  display: flex;
+}
+
+.lightbox-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: auto;
+  padding: 2.6rem 2rem 1rem;
+}
+
+.lightbox-stage img {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  background: #fff;
+  cursor: zoom-in;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-overlay.is-zoomed .lightbox-stage img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+  z-index: 1;
+  border: 0;
+  background: none;
+  color: #cdd7e8;
+  font-size: 2.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover {
+  color: #fff;
+}
+
+.lightbox-caption {
+  margin: 0;
+  padding: 0.7rem 1.5rem 1.1rem;
+  text-align: center;
+  color: #b9c4d8;
+  font-size: 0.92rem;
+}
+
+.docs-table {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.docs-table th {
+  background: var(--brand-soft);
+  color: var(--ink);
+}
+
+.docs-table td,
+.docs-table th {
+  border-color: var(--line);
+  vertical-align: top;
+}
+
+.docs-step-title {
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
 @media (max-width: 900px) {
   .finding-grid {
     grid-template-columns: 1fr;
+  }
+
+  .docs-table {
+    display: block;
+    overflow-x: auto;
   }
 }

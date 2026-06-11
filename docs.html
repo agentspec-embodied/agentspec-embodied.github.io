@@ -59,6 +59,43 @@
           <li>Module-level and interaction-level effects can be measured under consistent settings.</li>
           <li>The same design space is reused across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR.</li>
         </ul>
+        <p>
+          Every agent is assembled from the same set of interchangeable building blocks.
+          Each module exposes a small typed interface, so changing a reasoning strategy or a
+          memory backend is a one-line swap rather than a rewrite:
+        </p>
+        <table class="table is-fullwidth is-striped docs-table">
+          <thead>
+            <tr><th>Module</th><th>Responsibility</th><th>Built-in implementations</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Perception</strong></td>
+              <td>Converts raw environment observations into a <code>UnifiedAgentInput</code> shared by all downstream modules.</td>
+              <td><code>MiniGridPerceptionModule</code>, <code>DeliveryBenchPerceptionModule</code>, THOR adapters</td>
+            </tr>
+            <tr>
+              <td><strong>Reasoning</strong></td>
+              <td>Plans and selects the next action from the unified input plus retrieved memory.</td>
+              <td>Simple (rule-based), Direct LLM, CoT, ReAct, ToT, RAP, Buffer-of-Thought</td>
+            </tr>
+            <tr>
+              <td><strong>Memory</strong></td>
+              <td>Stores experiences and retrieves the most relevant ones for the current step.</td>
+              <td>Sliding-window, graph memory, A-MEM, Mem0, MemoryBank, LightMem, Letta, and more</td>
+            </tr>
+            <tr>
+              <td><strong>Reflection</strong></td>
+              <td>Critiques past trajectories and feeds lessons back into reasoning.</td>
+              <td>Reflexion, Self-Refine, Retroformer</td>
+            </tr>
+            <tr>
+              <td><strong>Action</strong></td>
+              <td>Maps reasoning output to the environment's action schema and executes it.</td>
+              <td>Benchmark adapters via the unified <code>get_adapter</code> registry</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -84,6 +121,167 @@ pip install -e ".[thor]"</code></pre>
 python examples/minigrid_example.py --env MiniGrid-DoorKey-5x5-v0 --no-llm
 python examples/minigrid_react_example.py --env MiniGrid-DoorKey-5x5-v0
 python examples/deliverybench_example.py --reasoning-method react</code></pre>
+        <p>
+          Each example script accepts <code>--model</code>, <code>--api-key</code>, and
+          <code>--base-url</code> flags. OpenRouter-hosted models (e.g.
+          <code>anthropic/claude-3.5-sonnet</code>) are auto-detected from the model name,
+          so the same script runs against OpenAI, Anthropic, or Gemini backends without code changes.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Example 1: Assemble a ReAct Agent on MiniGrid</h2>
+        <p>
+          This walkthrough builds a complete embodied agent for
+          <code>MiniGrid-DoorKey-5x5-v0</code> from individual modules, mirroring
+          <code>examples/minigrid_react_example.py</code>. The agent must find a key,
+          unlock a door, and reach the goal — a partially observable, multi-stage task.
+        </p>
+
+        <h3 class="docs-step-title">Step 1 — Create the environment and modules</h3>
+        <p>
+          Environments are obtained through the adapter registry, so the same agent code
+          works for any registered benchmark. Perception, reasoning, and memory are
+          constructed independently:
+        </p>
+        <pre class="bibtex-block"><code>import benchmarks.minigrid  # registers the MiniGrid adapter
+from agents import EmbodiedAgent
+from modules.adapters import get_adapter
+from modules.perception import MiniGridPerceptionModule
+from modules.reasoning import ReActReasoning
+from modules.llm import OpenAIClient
+
+env = get_adapter("minigrid", env_name="MiniGrid-DoorKey-5x5-v0")
+
+perception = MiniGridPerceptionModule()
+
+llm_client = OpenAIClient(
+    api_key="sk-...",
+    model="gpt-4o",
+    temperature=0.0,   # deterministic decoding stabilizes partially observable tasks
+)
+
+reasoning = ReActReasoning(
+    llm_client=llm_client,
+    max_iterations=10,
+    enable_history=True,   # keeps Thought/Action/Observation history across steps
+    strict_format=True,
+)</code></pre>
+
+        <h3 class="docs-step-title">Step 2 — Compose the agent</h3>
+        <p>
+          The <code>EmbodiedAgent</code> simply wires the modules together. Swapping
+          <code>ReActReasoning</code> for <code>COTReasoning</code> or <code>ToTReasoning</code>,
+          or replacing the memory backend, requires no other changes:
+        </p>
+        <pre class="bibtex-block"><code>from modules.memory import MemoryModule
+
+class SlidingWindowMemory(MemoryModule):
+    """Keep the most recent experiences (FIFO)."""
+    def __init__(self, max_memories=50):
+        self._memories, self.max_memories = [], max_memories
+
+    def retrieve(self, query, top_k=5, **kwargs):
+        return self._memories[-top_k:]
+
+    def store(self, experience, **kwargs):
+        self._memories.append(experience)
+        if len(self._memories) > self.max_memories:
+            self._memories.pop(0)
+
+    def reset(self):
+        self._memories = []
+
+agent = EmbodiedAgent(
+    perception=perception,
+    reasoning=reasoning,
+    memory=SlidingWindowMemory(max_memories=50),
+)</code></pre>
+
+        <h3 class="docs-step-title">Step 3 — Run the episode loop</h3>
+        <p>
+          On every step the agent perceives, retrieves memory, reasons, and returns an
+          action; the result is fed back so memory and the ReAct history stay grounded:
+        </p>
+        <pre class="bibtex-block"><code>obs, info = env.reset()
+agent.reset()
+
+for step in range(200):
+    action = agent.step(
+        obs,
+        info=info,
+        meta=env.meta,
+        task=env.task_spec,
+        action_space=env.action_schema,
+    )
+
+    obs, reward, terminated, truncated, info = env.step(action)
+
+    reasoning.add_observation(f"Reward: {reward:.2f}", float(reward))
+    agent.observe_result(
+        reward=reward, next_obs=obs,
+        done=terminated, truncated=truncated, info=info,
+    )
+
+    if terminated or truncated:
+        break</code></pre>
+        <p>
+          Or run the bundled script directly — it also saves per-step frames and logs under
+          <code>artifacts/runs/react/</code> for inspection:
+        </p>
+        <pre class="bibtex-block"><code>python examples/minigrid_react_example.py \
+  --env MiniGrid-DoorKey-5x5-v0 \
+  --model gpt-4o \
+  --max-steps 200</code></pre>
+      </div>
+    </section>
+
+    <section class="section-block section-soft">
+      <div class="container is-max-desktop">
+        <h2 class="section-title">Example 2: Module Ablation on DeliveryBench</h2>
+        <p>
+          Because modules share typed interfaces, a controlled ablation is just a change of
+          command-line flag — the environment wrapper, perception, and evaluation pipeline
+          stay identical. This is how the module-level results in the paper are produced.
+        </p>
+        <p>
+          Compare five reasoning strategies on the same DeliveryBench task:
+        </p>
+        <pre class="bibtex-block"><code># Rule-based baseline (no LLM, useful as a sanity check)
+python examples/deliverybench_example.py --reasoning-method simple
+
+# Direct LLM reasoning
+python examples/deliverybench_example.py --reasoning-method llm \
+  --model gpt-4o-mini
+
+# Chain-of-Thought
+python examples/deliverybench_example.py --reasoning-method cot \
+  --model anthropic/claude-3.5-sonnet --llm-provider openrouter
+
+# ReAct (interleaved Thought / Action / Observation)
+python examples/deliverybench_example.py --reasoning-method react \
+  --model anthropic/claude-3.5-sonnet --llm-provider openrouter
+
+# Tree-of-Thoughts with breadth-first search
+python examples/deliverybench_example.py --reasoning-method tot \
+  --model anthropic/claude-3.5-sonnet --llm-provider openrouter \
+  --tot-search-strategy BFS</code></pre>
+        <p>
+          The same pattern applies to the other axes of the design space. For instance, to
+          ablate the <strong>memory</strong> module while holding reasoning fixed at ReAct,
+          run the corresponding MiniGrid example scripts:
+        </p>
+        <pre class="bibtex-block"><code>python examples/minigrid_react_example.py        # sliding-window memory
+python examples/minigrid_amem_example.py         # A-MEM structured memory
+python examples/minigrid_graph_memory_example.py # graph-based memory
+python examples/minigrid_mem0_example.py         # Mem0 backend</code></pre>
+        <p>
+          Each run writes its trajectory, per-step reasoning traces, and metrics to
+          <code>artifacts/runs/</code>, so configurations can be compared step by step
+          under identical seeds and settings.
+        </p>
       </div>
     </section>
 
@@ -111,7 +309,6 @@ python examples/deliverybench_example.py --reasoning-method react</code></pre>
       <div class="container is-max-desktop">
         <h2 class="section-title">Benchmark and Artifacts</h2>
         <ul class="bullets">
-          <li><a href="assets/docs/13434_AgentSpec_A_Modular_Spec.pdf" target="_blank" rel="noopener">Paper PDF</a></li>
           <li><a href="assets/images/figures/final_main_results_compact.png" target="_blank" rel="noopener">Main results figure</a></li>
           <li><a href="assets/images/analysis/qwen35_9b_pareto_two_panel.png" target="_blank" rel="noopener">Pareto curve figure (PNG)</a></li>
           <li><a href="assets/images/case-studies/deliverybench-case.png" target="_blank" rel="noopener">DeliveryBench case study (PNG)</a></li>

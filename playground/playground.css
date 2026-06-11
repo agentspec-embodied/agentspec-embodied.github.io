@@ -199,7 +199,79 @@ code { font-family: var(--mono); font-size: 0.88em; color: var(--accent); }
   border-radius: 3px;
 }
 
-#env-name-wrap.is-hidden { display: none; }
+.is-hidden { display: none !important; }
+
+/* ── Perception auto-select badge ───────────────────────── */
+
+.pg-mod-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pg-auto-badge {
+  margin-left: auto;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mem);
+  background: rgba(102, 187, 106, 0.15);
+  border: 1px solid rgba(102, 187, 106, 0.3);
+  padding: 2px 7px;
+  border-radius: 4px;
+  animation: fadeout-badge 2s forwards;
+}
+
+@keyframes fadeout-badge {
+  0%   { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Compatibility warning ───────────────────────────────── */
+
+.pg-compat-warn {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 167, 38, 0.08);
+  border: 1px solid rgba(255, 167, 38, 0.3);
+  border-radius: 7px;
+  font-size: 0.7rem;
+  color: #ffa726;
+  line-height: 1.4;
+}
+
+.pg-compat-warn i { flex-shrink: 0; margin-top: 1px; }
+
+/* ── Install hint ────────────────────────────────────────── */
+
+.pg-install-hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 7px;
+  padding: 6px 10px;
+  background: rgba(56, 189, 248, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.pg-install-hint i { color: var(--accent); flex-shrink: 0; font-size: 0.75rem; }
+.pg-install-hint code { color: var(--accent); font-size: 0.68rem; }
+
+/* ── Incompatible option dimming ─────────────────────────── */
+
+select option:disabled,
+select option.pg-opt-incompat {
+  color: var(--text-muted);
+  font-style: italic;
+}
 
 /* ── Module Combination Map ──────────────────────────────── */
 
@@ -657,6 +729,100 @@ code { font-family: var(--mono); font-size: 0.88em; color: var(--accent); }
   .pg-map-card { min-width: 100px; }
 }
 
+/* ── How to use panel ────────────────────────────────────── */
+
+.pg-usage-panel { padding: 16px 18px; }
+
+.pg-usage-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.pg-usage-head h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.pg-usage-icon { color: var(--accent); font-size: 0.9rem; }
+
+.pg-usage-steps { display: flex; flex-direction: column; gap: 14px; }
+
+.pg-usage-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.pg-usage-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.pg-usage-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.pg-usage-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.pg-usage-code {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  white-space: pre;
+  line-height: 1.6;
+}
+
+/* ── Observation demo note ───────────────────────────────── */
+
+.pg-obv-subtitle {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+  font-style: italic;
+}
+
+.pg-obv-demo-note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 7px;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.pg-obv-demo-note i { color: var(--accent); flex-shrink: 0; margin-top: 1px; font-size: 0.75rem; }
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -668,4 +834,76 @@ code { font-family: var(--mono); font-size: 0.88em; color: var(--accent); }
 .pg-code-inline-copy.is-copied {
   color: var(--mem) !important;
   border-color: var(--mem) !important;
+}
+
+/* ── Start button states ─────────────────────────────────── */
+
+.pg-btn-start.is-running {
+  background: linear-gradient(135deg, #1e3a5f, #1a4a6e);
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.pg-btn-start.is-done {
+  background: linear-gradient(135deg, #1b4d2e, #1e6b38);
+  pointer-events: none;
+}
+
+.pg-btn-start.is-failed {
+  background: linear-gradient(135deg, #5c1a1a, #7b2222);
+  pointer-events: none;
+}
+
+/* ── Spinner ─────────────────────────────────────────────── */
+
+.pg-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Step enter animation ────────────────────────────────── */
+
+.pg-obv-step {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.pg-obv-step--enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* ── Additional step status colors ──────────────────────── */
+
+.pg-obv-step--init { border-left-color: var(--accent); }
+.pg-obv-step--init .pg-obv-step-badge { background: rgba(56,189,248,0.12); color: var(--accent); }
+
+.pg-obv-step--action { border-left-color: var(--text-dim); }
+.pg-obv-step--action .pg-obv-step-badge { background: rgba(122,141,163,0.12); color: var(--text-dim); }
+
+.pg-obv-step--reason { border-left-color: var(--reas); }
+.pg-obv-step--reason .pg-obv-step-badge { background: rgba(124,77,255,0.12); color: #b388ff; }
+
+.pg-obv-step--success { border-left-color: var(--mem); }
+.pg-obv-step--success .pg-obv-step-badge { background: rgba(102,187,106,0.15); color: var(--mem); }
+
+.pg-obv-step--fail { border-left-color: #ef5350; }
+.pg-obv-step--fail .pg-obv-step-badge { background: rgba(239,83,80,0.12); color: #ef5350; }
+
+/* ── Observation panel scroll ────────────────────────────── */
+.pg-obv-steps {
+  max-height: 320px;
+  overflow-y: auto;
 }

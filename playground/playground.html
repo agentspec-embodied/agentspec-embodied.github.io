@@ -24,37 +24,151 @@
       <!-- Environment -->
       <section class="pg-mod">
         <div class="pg-mod-head"><span class="pg-dot pg-dot--env"></span><span class="pg-mod-label">Environment</span></div>
-        <label class="pg-field-label" for="sel-env">Adapter</label>
+        <label class="pg-field-label" for="sel-env">Family</label>
         <div class="pg-select"><select id="sel-env">
-          <option value="minigrid">MiniGrid</option>
-          <option value="deliverybench">DeliveryBench</option>
+          <optgroup label="— Grid World —">
+            <option value="minigrid">MiniGrid</option>
+            <option value="babyai">BabyAI</option>
+          </optgroup>
+          <optgroup label="— 3D Indoor —">
+            <option value="thor">AI2-THOR</option>
+            <option value="robothor">RoboTHOR</option>
+          </optgroup>
+          <optgroup label="— Simulation / Task —">
+            <option value="deliverybench">DeliveryBench</option>
+            <option value="gym">Gym (Gymnasium)</option>
+          </optgroup>
         </select></div>
+
+        <!-- Dynamic sub-env: MiniGrid / BabyAI -->
         <div id="env-name-wrap">
-          <label class="pg-field-label" for="sel-env-name">Environment Name</label>
+          <label class="pg-field-label" for="sel-env-name">Task</label>
           <div class="pg-select"><select id="sel-env-name">
-            <option value="MiniGrid-DoorKey-5x5-v0">DoorKey-5x5</option>
-            <option value="MiniGrid-DoorKey-6x6-v0">DoorKey-6x6</option>
-            <option value="MiniGrid-Empty-5x5-v0">Empty-5x5</option>
-            <option value="MiniGrid-DoorKey-8x8-v0">DoorKey-8x8</option>
-            <option value="MiniGrid-MultiRoom-N2-S4-v0">MultiRoom-N2-S4</option>
-            <option value="MiniGrid-MemoryS17Random-v0">MemoryS17Random</option>
+            <optgroup label="— Navigation —">
+              <option value="MiniGrid-Empty-5x5-v0">Empty 5×5</option>
+              <option value="MiniGrid-Empty-6x6-v0">Empty 6×6</option>
+              <option value="MiniGrid-Empty-8x8-v0">Empty 8×8</option>
+              <option value="MiniGrid-FourRooms-v0">Four Rooms</option>
+              <option value="MiniGrid-MultiRoom-N2-S4-v0">MultiRoom N2-S4</option>
+              <option value="MiniGrid-MultiRoom-N4-S5-v0">MultiRoom N4-S5</option>
+              <option value="MiniGrid-SimpleCrossingS9N1-v0">SimpleCrossing S9N1</option>
+              <option value="MiniGrid-LavaCrossingS9N1-v0">LavaCrossing S9N1</option>
+              <option value="MiniGrid-LavaGapS7-v0">LavaGap S7</option>
+            </optgroup>
+            <optgroup label="— Key &amp; Door —">
+              <option value="MiniGrid-DoorKey-5x5-v0">DoorKey 5×5</option>
+              <option value="MiniGrid-DoorKey-6x6-v0">DoorKey 6×6</option>
+              <option value="MiniGrid-DoorKey-8x8-v0">DoorKey 8×8</option>
+              <option value="MiniGrid-Unlock-v0">Unlock</option>
+              <option value="MiniGrid-LockedRoom-v0">Locked Room</option>
+              <option value="MiniGrid-KeyCorridorS3R1-v0">KeyCorridor S3R1</option>
+              <option value="MiniGrid-KeyCorridorS4R3-v0">KeyCorridor S4R3</option>
+            </optgroup>
+            <optgroup label="— Object Manipulation —">
+              <option value="MiniGrid-Fetch-5x5-N2-v0">Fetch 5×5</option>
+              <option value="MiniGrid-Fetch-8x8-N3-v0">Fetch 8×8</option>
+              <option value="MiniGrid-GoToObject-6x6-N2-v0">GoToObject 6×6</option>
+              <option value="MiniGrid-PutNear-6x6-N2-v0">PutNear 6×6</option>
+              <option value="MiniGrid-UnlockPickup-v0">UnlockPickup</option>
+              <option value="MiniGrid-BlockedUnlockPickup-v0">BlockedUnlockPickup</option>
+              <option value="MiniGrid-ObstructedMaze-2Dl-v0">ObstructedMaze 2Dl</option>
+            </optgroup>
+            <optgroup label="— Dynamic —">
+              <option value="MiniGrid-Dynamic-Obstacles-5x5-v0">DynObstacles 5×5</option>
+              <option value="MiniGrid-Dynamic-Obstacles-8x8-v0">DynObstacles 8×8</option>
+              <option value="MiniGrid-DistShift1-v0">DistShift 1</option>
+              <option value="MiniGrid-RedBlueDoors-6x6-v0">RedBlueDoors 6×6</option>
+            </optgroup>
           </select></div>
         </div>
-        <p class="pg-hint">Defines the world and task the agent will operate in.</p>
+
+        <!-- Dynamic sub-env: THOR -->
+        <div id="env-scene-wrap" class="is-hidden">
+          <label class="pg-field-label" for="sel-env-scene">Scene</label>
+          <div class="pg-select"><select id="sel-env-scene">
+            <optgroup label="— Kitchen —">
+              <option value="FloorPlan1">Kitchen 1</option>
+              <option value="FloorPlan2">Kitchen 2</option>
+              <option value="FloorPlan3">Kitchen 3</option>
+              <option value="FloorPlan5">Kitchen 5</option>
+            </optgroup>
+            <optgroup label="— Living Room —">
+              <option value="FloorPlan201">Living Room 1</option>
+              <option value="FloorPlan202">Living Room 2</option>
+              <option value="FloorPlan203">Living Room 3</option>
+            </optgroup>
+            <optgroup label="— Bedroom —">
+              <option value="FloorPlan301">Bedroom 1</option>
+              <option value="FloorPlan302">Bedroom 2</option>
+            </optgroup>
+            <optgroup label="— Bathroom —">
+              <option value="FloorPlan401">Bathroom 1</option>
+              <option value="FloorPlan402">Bathroom 2</option>
+            </optgroup>
+          </select></div>
+        </div>
+
+        <!-- Dynamic sub-env: RoboTHOR -->
+        <div id="env-robothor-wrap" class="is-hidden">
+          <label class="pg-field-label" for="sel-env-robothor">Scene</label>
+          <div class="pg-select"><select id="sel-env-robothor">
+            <option value="FloorPlan_Train1_1">Train 1-1</option>
+            <option value="FloorPlan_Train1_2">Train 1-2</option>
+            <option value="FloorPlan_Train2_1">Train 2-1</option>
+            <option value="FloorPlan_Train3_1">Train 3-1</option>
+            <option value="FloorPlan_Val1_1">Val 1-1</option>
+            <option value="FloorPlan_Val2_1">Val 2-1</option>
+          </select></div>
+        </div>
+
+        <!-- Dynamic sub-env: Gym -->
+        <div id="env-gym-wrap" class="is-hidden">
+          <label class="pg-field-label" for="sel-env-gym">Environment ID</label>
+          <div class="pg-select"><select id="sel-env-gym">
+            <optgroup label="— Classic Control —">
+              <option value="CartPole-v1">CartPole-v1</option>
+              <option value="MountainCar-v0">MountainCar-v0</option>
+              <option value="Acrobot-v1">Acrobot-v1</option>
+              <option value="Pendulum-v1">Pendulum-v1</option>
+            </optgroup>
+            <optgroup label="— Box2D —">
+              <option value="LunarLander-v2">LunarLander-v2</option>
+              <option value="BipedalWalker-v3">BipedalWalker-v3</option>
+            </optgroup>
+          </select></div>
+        </div>
+
+        <!-- Compatibility warning -->
+        <div id="env-compat-warn" class="pg-compat-warn is-hidden">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span id="env-compat-msg"></span>
+        </div>
+
+        <!-- Install hint -->
+        <div id="env-install-hint" class="pg-install-hint is-hidden">
+          <i class="fas fa-terminal"></i>
+          <code id="env-install-cmd"></code>
+        </div>
+
+        <p class="pg-hint" id="env-hint-text">Defines the world and task the agent will operate in.</p>
       </section>
 
       <!-- Perception -->
       <section class="pg-mod">
-        <div class="pg-mod-head"><span class="pg-dot pg-dot--perc"></span><span class="pg-mod-label">Perception</span></div>
+        <div class="pg-mod-head">
+          <span class="pg-dot pg-dot--perc"></span>
+          <span class="pg-mod-label">Perception</span>
+          <span class="pg-auto-badge is-hidden" id="perc-auto-badge">auto</span>
+        </div>
         <label class="pg-field-label" for="sel-perception">Adapter</label>
         <div class="pg-select"><select id="sel-perception">
-          <option value="minigrid">MiniGrid (basic)</option>
-          <option value="minigrid_relation">MiniGrid (relation)</option>
-          <option value="deliverybench">DeliveryBench</option>
-          <option value="gym">Gym</option>
-          <option value="thor">THOR</option>
+          <option value="minigrid"        data-env="minigrid babyai">MiniGrid (basic)</option>
+          <option value="minigrid_relation" data-env="minigrid babyai">MiniGrid (relation)</option>
+          <option value="thor"            data-env="thor robothor">AI2-THOR / RoboTHOR</option>
+          <option value="deliverybench"   data-env="deliverybench">DeliveryBench</option>
+          <option value="gym"             data-env="gym">Gym</option>
         </select></div>
-        <p class="pg-hint">Converts raw observations into <code>UnifiedAgentInput</code>.</p>
+        <p class="pg-hint">Auto-selected based on environment. Converts raw observations into <code>UnifiedAgentInput</code>.</p>
       </section>
 
       <!-- Reasoning -->
@@ -62,13 +176,23 @@
         <div class="pg-mod-head"><span class="pg-dot pg-dot--reas"></span><span class="pg-mod-label">Reasoning</span></div>
         <label class="pg-field-label" for="sel-reasoning">Method</label>
         <div class="pg-select"><select id="sel-reasoning">
-          <option value="simple">Simple (no LLM)</option>
-          <option value="llm">LLM direct</option>
-          <option value="react">ReAct</option>
-          <option value="cot">Chain-of-Thought</option>
-          <option value="tot">Tree of Thoughts</option>
-          <option value="guided_search">Guided Search</option>
-          <option value="rap">RAP (MCTS)</option>
+          <optgroup label="— No LLM —">
+            <option value="simple">Simple (rule-based)</option>
+          </optgroup>
+          <optgroup label="— Prompt-based —">
+            <option value="react">ReAct</option>
+            <option value="cot">Chain-of-Thought (CoT)</option>
+            <option value="plan_and_solve">Plan-and-Solve</option>
+            <option value="self_consistency">Self-Consistency</option>
+            <option value="sitsup">SitSup (Situation-aware)</option>
+            <option value="mad">Multi-Agent Debate</option>
+          </optgroup>
+          <optgroup label="— Search-based —">
+            <option value="tot">Tree of Thoughts (ToT)</option>
+            <option value="guided_search">Guided Search</option>
+            <option value="rap">RAP (MCTS)</option>
+            <option value="lats">LATS (Language Agent Tree Search)</option>
+          </optgroup>
         </select></div>
         <p class="pg-hint">LLM-based methods require <code>OPENAI_API_KEY</code>.</p>
       </section>
@@ -79,15 +203,35 @@
         <label class="pg-field-label" for="sel-memory">Backend</label>
         <div class="pg-select"><select id="sel-memory">
           <option value="none">None</option>
-          <option value="minigrid">MiniGrid</option>
-          <option value="bot">Buffer-of-Thought</option>
-          <option value="graph">GraphContextMemory</option>
-          <option value="ace">ACE (Agentic Context Engine)</option>
-          <option value="amem">A-Mem (Associative Memory)</option>
-          <option value="dynamic_cheatsheet">Dynamic Cheatsheet</option>
-          <option value="letta">Letta (Structured Blocks)</option>
+          <optgroup label="— Simple / Buffer —">
+            <option value="bot">Buffer-of-Thought</option>
+            <option value="chatdb">ChatDB (SQLite)</option>
+            <option value="memorybank">MemoryBank</option>
+          </optgroup>
+          <optgroup label="— Graph / Context —">
+            <option value="graph">GraphContextMemory</option>
+            <option value="gmemory">GMemory (LangChain Graph)</option>
+          </optgroup>
+          <optgroup label="— LLM-enhanced —">
+            <option value="ace">ACE (Agentic Context Engine)</option>
+            <option value="dynamic_cheatsheet">Dynamic Cheatsheet</option>
+            <option value="ranked">Ranked Memory</option>
+            <option value="cam">CAM (Contextual Agent Memory)</option>
+          </optgroup>
+          <optgroup label="— Associative / Vector —">
+            <option value="amem">A-Mem (Associative Memory)</option>
+            <option value="mirix">MIRIX</option>
+            <option value="lightmem">LightMem (Qdrant)</option>
+            <option value="langmem">LangMem</option>
+          </optgroup>
+          <optgroup label="— External Services —">
+            <option value="letta">Letta (Structured Blocks)</option>
+            <option value="mem0">Mem0</option>
+            <option value="zep">Zep</option>
+            <option value="simplemem">SimpleMem</option>
+          </optgroup>
         </select></div>
-        <p class="pg-hint">Stores and retrieves past observations. LLM-backends require <code>OPENAI_API_KEY</code>.</p>
+        <p class="pg-hint">LLM-enhanced backends require <code>OPENAI_API_KEY</code>. External services need additional credentials.</p>
       </section>
 
       <!-- Reflection -->
@@ -97,8 +241,10 @@
         <div class="pg-select"><select id="sel-reflection">
           <option value="none">None</option>
           <option value="self_refine">Self-Refine</option>
+          <option value="reflexion">Reflexion</option>
+          <option value="retroformer">Retroformer</option>
         </select></div>
-        <p class="pg-hint">Self-refine and improve reasoning output iteratively.</p>
+        <p class="pg-hint">Reflection modules require <code>OPENAI_API_KEY</code>.</p>
       </section>
     </div>
   </aside>
@@ -153,7 +299,7 @@
           <i class="fas fa-code pg-code-title-icon"></i>
           <div>
             <h2>Generated Agent Code</h2>
-            <p class="pg-panel-sub">Run agent in different environments</p>
+            <p class="pg-panel-sub">Copy this script into your local clone of the framework</p>
           </div>
         </div>
         <div class="pg-code-actions">
@@ -167,7 +313,47 @@
         <button class="pg-code-inline-copy" id="btn-copy-inline" title="Copy"><i class="fas fa-copy"></i> Copy</button>
       </div>
       <div class="pg-code-footer">
-        <button class="pg-btn pg-btn--download" id="btn-download"><i class="fas fa-download"></i> Download</button>
+        <button class="pg-btn pg-btn--download" id="btn-download"><i class="fas fa-download"></i> Download .py</button>
+      </div>
+    </div>
+
+    <!-- How to use the code -->
+    <div class="pg-panel pg-usage-panel">
+      <div class="pg-usage-head">
+        <i class="fas fa-terminal pg-usage-icon"></i>
+        <h3>How to run locally</h3>
+      </div>
+      <div class="pg-usage-steps">
+        <div class="pg-usage-step">
+          <span class="pg-usage-num">1</span>
+          <div>
+            <div class="pg-usage-label">Clone the framework</div>
+            <code class="pg-usage-code">git clone https://github.com/SimworldAgentFactory/embodied-agent-framework.git
+cd embodied-agent-framework</code>
+          </div>
+        </div>
+        <div class="pg-usage-step">
+          <span class="pg-usage-num">2</span>
+          <div>
+            <div class="pg-usage-label">Install dependencies</div>
+            <code class="pg-usage-code">pip install -e .
+pip install -r requirements.txt</code>
+          </div>
+        </div>
+        <div class="pg-usage-step">
+          <span class="pg-usage-num">3</span>
+          <div>
+            <div class="pg-usage-label">Set your API key <span class="pg-usage-optional">(if using LLM reasoning)</span></div>
+            <code class="pg-usage-code">export OPENAI_API_KEY=sk-...</code>
+          </div>
+        </div>
+        <div class="pg-usage-step">
+          <span class="pg-usage-num">4</span>
+          <div>
+            <div class="pg-usage-label">Save the generated code &amp; run</div>
+            <code class="pg-usage-code">python my_agent.py</code>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -191,29 +377,27 @@
       <div class="pg-summary-row"><span>Reflection</span><span id="sum-refl">None</span></div>
     </div>
 
-    <div class="pg-panel pg-howto">
-      <h3 class="pg-howto-title">How to Run</h3>
-      <ol class="pg-howto-list">
-        <li><span class="pg-howto-num">1</span> Select an environment from the map.</li>
-        <li><span class="pg-howto-num">2</span> Configure module combinations in the left panel.</li>
-        <li><span class="pg-howto-num">3</span> Click 'Start Agent' to run.</li>
-      </ol>
-    </div>
-
-    <button class="pg-btn-start" id="btn-start">Start Agent <i class="fas fa-play"></i></button>
+    <button class="pg-btn-start" id="btn-start">Preview Agent Trace <i class="fas fa-play"></i></button>
 
     <div class="pg-panel pg-obv">
       <div class="pg-obv-head">
-        <i class="fas fa-satellite-dish pg-obv-head-icon"></i>
-        <h3 class="pg-obv-title">Observation</h3>
+        <i class="fas fa-film pg-obv-head-icon"></i>
+        <div>
+          <h3 class="pg-obv-title">Agent Trace Preview</h3>
+          <p class="pg-obv-subtitle">Pre-recorded demo — not a live run</p>
+        </div>
+      </div>
+      <div class="pg-obv-demo-note">
+        <i class="fas fa-info-circle"></i>
+        This is a representative reasoning trace for the selected configuration. To run the agent for real, download the generated code and execute it locally.
       </div>
       <div class="pg-obv-meta">
         <div class="pg-obv-meta-row">
-          <span class="pg-obv-meta-key">Recovery</span>
+          <span class="pg-obv-meta-key">Strategy</span>
           <span class="pg-obv-meta-val" id="obv-recovery">—</span>
         </div>
         <div class="pg-obv-meta-row">
-          <span class="pg-obv-meta-key">Diagnostic</span>
+          <span class="pg-obv-meta-key">Entry action</span>
           <code class="pg-obv-meta-code" id="obv-diagnostic">—</code>
         </div>
       </div>

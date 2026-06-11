@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AgentSpec: A Modular Specification Framework for Controlled Analysis of Embodied Agents</title>
-  <meta
-    name="description"
-    content="AgentSpec provides a modular specification framework for controlled analysis of embodied agents across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR."
-  />
+  <meta name="description"
+    content="AgentSpec provides a modular specification framework for controlled analysis of embodied agents across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR." />
   <link rel="icon" type="image/svg+xml" href="assets/agentspec-logo.svg" />
   <link rel="stylesheet" href="css/bulma.min.css" />
   <link rel="stylesheet" href="css/home.css" />
 </head>
+
 <body>
   <nav class="navbar is-fixed-top top-nav" role="navigation" aria-label="main navigation">
     <div class="container">
@@ -31,7 +31,8 @@
           <a class="navbar-item is-active" href="index.html">Home</a>
           <a class="navbar-item" href="docs.html">Docs</a>
           <a class="navbar-item" href="playground/playground.html">Playground</a>
-          <a class="navbar-item" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">GitHub</a>
+          <a class="navbar-item" href="https://github.com/chenjix/agentfractory" target="_blank"
+            rel="noopener">GitHub</a>
         </div>
       </div>
     </div>
@@ -50,7 +51,6 @@
         <p class="authors">A modular framework for controlled embodied-agent analysis</p>
         <p class="affiliations">Code, benchmark assets, and docs are continuously updated on this site.</p>
         <div class="links-row">
-          <a class="paper-pill" href="assets/docs/13434_AgentSpec_A_Modular_Spec.pdf" target="_blank" rel="noopener">Paper (PDF)</a>
           <a class="paper-pill" href="assets/video/agentspec.mov" target="_blank" rel="noopener">Demo Video</a>
           <a class="paper-pill" href="https://github.com/chenjix/agentfractory" target="_blank" rel="noopener">Code</a>
           <a class="paper-pill" href="docs.html">Documentation</a>
@@ -79,21 +79,30 @@
       <div class="container is-max-desktop">
         <h2 class="section-title">Abstract</h2>
         <p>
-          LLM-based embodied agents are increasingly built from modules such as reasoning, memory, reflection, action execution, and learning. However, these modules are often embedded in tightly coupled pipelines, making it hard to isolate component contributions or study interaction effects. AgentSpec introduces a modular specification framework that represents embodied agents as explicit compositions of reusable policy components with standardized interfaces.
+          LLM-based embodied agents are increasingly built from modules such as reasoning, memory, reflection, action
+          execution, and learning. However, these modules are often embedded in tightly coupled pipelines, making it
+          hard to isolate component contributions or study interaction effects. AgentSpec introduces a modular
+          specification framework that represents embodied agents as explicit compositions of reusable policy components
+          with standardized interfaces.
         </p>
         <p>
-          We instantiate AgentSpec across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR, and run controlled studies over reasoning, memory, reflection, and reinforcement learning modules. Our experiments show that performance is jointly determined by component quality and representation compatibility. Structured multi-granularity memory improves long-horizon state tracking, reasoning and memory exhibit strong complementarity, and lightweight modular compositions can achieve stronger performance-cost trade-offs than heavier misaligned pipelines.
+          We instantiate AgentSpec across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR, and run controlled studies over
+          reasoning, memory, reflection, and reinforcement learning modules. Our experiments show that performance is
+          jointly determined by component quality and representation compatibility. Structured multi-granularity memory
+          improves long-horizon state tracking, reasoning and memory exhibit strong complementarity, and lightweight
+          modular compositions can achieve stronger performance-cost trade-offs than heavier misaligned pipelines.
         </p>
       </div>
     </section>
 
     <section class="section-block">
       <div class="container is-max-desktop">
-        <h2 class="section-title">Overview Figure</h2>
+        <h2 class="section-title">Overview</h2>
         <figure class="figure-card">
-          <img src="assets/images/figures/main_3.png" alt="AgentSpec modular design space overview" loading="lazy" />
+          <img src="assets/images/figures/Picture1.png" alt="AgentSpec modular design space overview" loading="lazy" />
           <figcaption>
-            AgentSpec turns tightly coupled embodied-agent pipelines into a controlled modular design space with fixed interfaces.
+            AgentSpec turns tightly coupled embodied-agent pipelines into a controlled modular design space with fixed
+            interfaces.
           </figcaption>
         </figure>
       </div>
@@ -102,8 +111,8 @@
     <section class="section-block section-soft">
       <div class="container is-max-desktop">
         <h2 class="section-title">Framework Design</h2>
-        <div class="columns is-variable is-5">
-          <div class="column is-7">
+        <div class="columns is-variable is-5 is-vcentered">
+          <div class="column is-6">
             <p>
               AgentSpec organizes policy execution into a modular
               <strong>Perception-Memory-Reasoning-Reflection-Action</strong>
@@ -117,12 +126,14 @@
               <li><strong>Learning</strong> can be attached to jointly improve policy behavior.</li>
             </ul>
             <p>
-              This decomposition enables controlled ablations and recombination across environments without rebuilding the full agent pipeline.
+              This decomposition enables controlled ablations and recombination across environments without rebuilding
+              the full agent pipeline.
             </p>
           </div>
-          <div class="column is-5">
+          <div class="column is-6">
             <figure class="figure-card compact">
-              <img src="assets/images/figures/framework_4.png" alt="AgentSpec modular loop and interfaces" loading="lazy" />
+              <img src="assets/images/figures/fig2.png" alt="AgentSpec modular loop and interfaces" loading="lazy" />
+              <figcaption>AgentSpec modular loop and typed interfaces.</figcaption>
             </figure>
           </div>
         </div>
@@ -135,15 +146,18 @@
         <div class="finding-grid">
           <article class="finding-card">
             <h3>Compatibility Matters</h3>
-            <p>Module strength alone is not sufficient; memory representation must match the reasoning strategy to produce gains.</p>
+            <p>Module strength alone is not sufficient; memory representation must match the reasoning strategy to
+              produce gains.</p>
           </article>
           <article class="finding-card">
             <h3>Environment Dependence</h3>
-            <p>Short symbolic tasks benefit more from per-step reasoning, while long-horizon embodied tasks are bottlenecked by state tracking.</p>
+            <p>Short symbolic tasks benefit more from per-step reasoning, while long-horizon embodied tasks are
+              bottlenecked by state tracking.</p>
           </article>
           <article class="finding-card">
             <h3>Efficiency-Aware Composition</h3>
-            <p>Performance improvements do not come from token usage alone; lightweight but aligned modules often offer better trade-offs.</p>
+            <p>Performance improvements do not come from token usage alone; lightweight but aligned modules often offer
+              better trade-offs.</p>
           </article>
         </div>
       </div>
@@ -152,10 +166,12 @@
     <section class="section-block section-soft">
       <div class="container is-max-desktop">
         <h2 class="section-title">Main Experimental Results</h2>
-        <figure class="figure-card">
-          <img src="assets/images/figures/final_main_results_compact.png" alt="Main benchmark results across embodied tasks" loading="lazy" />
+        <figure class="figure-card fit-md">
+          <img src="assets/images/figures/final_main_results_compact.png"
+            alt="Main benchmark results across embodied tasks" loading="lazy" />
           <figcaption>
-            Main benchmark performance across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR under controlled module compositions.
+            Main benchmark performance across DeliveryBench, ALFRED, MiniGrid, and RoboTHOR under controlled module
+            compositions.
           </figcaption>
         </figure>
       </div>
@@ -163,11 +179,23 @@
 
     <section class="section-block">
       <div class="container is-max-desktop">
-        <h2 class="section-title">Pareto Analysis</h2>
-        <figure class="figure-card">
-          <img src="assets/images/analysis/qwen35_9b_pareto_two_panel.png" alt="Pareto curve for Qwen3.5 9B experiments" loading="lazy" />
-          <figcaption>Pareto frontier showing performance-cost trade-offs under modular compositions.</figcaption>
-        </figure>
+        <h2 class="section-title">Analysis</h2>
+        <div class="columns is-variable is-5 is-vcentered">
+          <div class="column is-7">
+            <figure class="figure-card">
+              <img src="assets/images/analysis/qwen35_9b_pareto_two_panel.png"
+                alt="Pareto curve for Qwen3.5 9B experiments" loading="lazy" />
+              <figcaption>Pareto frontier showing performance-cost trade-offs under modular compositions.</figcaption>
+            </figure>
+          </div>
+          <div class="column is-5">
+            <figure class="figure-card">
+              <img src="assets/images/analysis/error_analysis.png" alt="Error analysis of module combinations"
+                loading="lazy" />
+              <figcaption>Error analysis highlighting representation mismatch and failure loops.</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -177,21 +205,18 @@
         <div class="columns is-variable is-5">
           <div class="column">
             <figure class="figure-card">
-              <img src="assets/images/case-studies/deliverybench-case.png" alt="DeliveryBench case study figure" loading="lazy" />
+              <img src="assets/images/case-studies/deliverybench-case.png" alt="DeliveryBench case study figure"
+                loading="lazy" />
+              <figcaption>DeliveryBench trajectory case study.</figcaption>
             </figure>
-            <p class="pdf-caption">DeliveryBench trajectory case study.</p>
           </div>
           <div class="column">
             <figure class="figure-card">
               <img src="assets/images/case-studies/alfred-case.png" alt="ALFRED case study figure" loading="lazy" />
+              <figcaption>ALFRED task-level case study.</figcaption>
             </figure>
-            <p class="pdf-caption">ALFRED task-level case study.</p>
           </div>
         </div>
-        <figure class="figure-card mt-4">
-          <img src="assets/images/analysis/error_analysis.png" alt="Error analysis of module combinations" loading="lazy" />
-          <figcaption>Error analysis highlighting representation mismatch and failure loops.</figcaption>
-        </figure>
       </div>
     </section>
 
@@ -236,7 +261,61 @@
           target.classList.toggle("is-active");
         });
       });
+
+      // Lightbox: click any figure to view fullscreen; click again for 1:1 zoom.
+      const overlay = document.createElement("div");
+      overlay.className = "lightbox-overlay";
+      overlay.innerHTML =
+        '<button class="lightbox-close" aria-label="Close">&times;</button>' +
+        '<div class="lightbox-stage"><img alt="" /></div>' +
+        '<p class="lightbox-caption"></p>';
+      document.body.appendChild(overlay);
+
+      const stage = overlay.querySelector(".lightbox-stage");
+      const zoomImg = overlay.querySelector("img");
+      const captionEl = overlay.querySelector(".lightbox-caption");
+
+      function openLightbox(src, caption) {
+        zoomImg.src = src;
+        captionEl.textContent = caption || "";
+        overlay.classList.add("is-open");
+        overlay.classList.remove("is-zoomed");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        overlay.classList.remove("is-open", "is-zoomed");
+        document.body.style.overflow = "";
+        zoomImg.src = "";
+      }
+
+      zoomImg.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const zoomed = overlay.classList.toggle("is-zoomed");
+        if (zoomed) {
+          stage.scrollLeft = (stage.scrollWidth - stage.clientWidth) / 2;
+          stage.scrollTop = (stage.scrollHeight - stage.clientHeight) / 2;
+        }
+      });
+      overlay.addEventListener("click", closeLightbox);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
+      });
+
+      document.querySelectorAll(".figure-card img").forEach((thumb) => {
+        const card = thumb.closest(".figure-card");
+        card.classList.add("zoomable");
+        const hint = document.createElement("span");
+        hint.className = "zoom-hint";
+        hint.textContent = "Click to zoom";
+        card.appendChild(hint);
+        card.addEventListener("click", () => {
+          const fig = card.querySelector("figcaption");
+          openLightbox(thumb.src, fig ? fig.textContent.trim() : thumb.alt);
+        });
+      });
     });
   </script>
 </body>
+
 </html>
