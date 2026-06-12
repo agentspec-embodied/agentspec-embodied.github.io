@@ -1,2 +1,2 @@
-# SimworldAgentFactory.github.io
-Website for AgentFactory
+# agentspec-embodied.github.io
+Website for agentspec-embodied
