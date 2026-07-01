@@ -83,13 +83,25 @@ body {
 }
 
 .authors {
-  font-size: 1rem;
-  margin-bottom: 0.2rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 0.6rem;
+}
+
+.authors sup {
+  font-size: 0.65em;
+  margin-left: 0.05em;
 }
 
 .affiliations {
   color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
   margin-bottom: 1.25rem;
+}
+
+.affiliations sup {
+  margin-right: 0.15rem;
 }
 
 .links-row {
